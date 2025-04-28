@@ -13,13 +13,10 @@ public class Transaction {
     private Long id;
 
     private String title;
-
     private Double amount;
-
-    @Column(name = "transaction_date") // 🔥 ADD THIS! "date" alone causes Oracle error
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") // foreign key
     private User user;
 }

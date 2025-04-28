@@ -1,12 +1,22 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const API_BASE_URL = 'http://localhost:8080/api/transactions'; // Update according to your backend URL
+const API_URL = 'http://localhost:8080/api/transactions';
 
-// export const getTransactions = async () => {
-//   const response = await axios.get(API_BASE_URL);
-//   return response.data;
-// };
+const getAll = async () => {
+  const response = await axios.get(API_URL);
+  return response.data;
+};
 
-// export const addTransaction = async (transaction) => {
-//   await axios.post(API_BASE_URL, transaction);
-// };
+const create = async (transaction) => {
+  const response = await axios.post(API_URL, transaction);
+  return response.data;
+};
+
+const deleteTransaction = async (id) => {
+  const response = await axios.delete(`${API_URL}/${id}`);
+  return response.data;
+};
+
+const transactionService = { getAll, create, delete: deleteTransaction };
+
+export default transactionService;
