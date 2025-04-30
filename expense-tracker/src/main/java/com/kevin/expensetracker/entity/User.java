@@ -1,11 +1,15 @@
 package com.kevin.expensetracker.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.util.List;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
+@Table(name = "app_user") // not "user" (user is reserved keyword!)
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -13,9 +17,8 @@ public class User {
     private Long id;
 
     private String username;
-    private String password;
+
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
+    private String password;
 }

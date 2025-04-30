@@ -16,29 +16,25 @@ function Transactions() {
       const newTransaction = {
         title: title.trim(),
         amount: parseFloat(amount),
-        date: new Date().toISOString(),
+        date: new Date().toISOString().split('T')[0],
       };
-      console.log('Sending transaction to backend:', newTransaction); // DEBUG LOG
       await transactionService.create(newTransaction);
       setTitle('');
       setAmount('');
       fetchTransactions();
     } catch (error) {
-      console.error('Failed to create transaction:', error); // DEBUG LOG
+      console.error('Failed to create transaction:', error);
     }
   };
-  
+
   const fetchTransactions = async () => {
     try {
       const data = await transactionService.getAll();
-      console.log('Received transactions from backend:', data); // DEBUG LOG
       setTransactions(data);
     } catch (error) {
-      console.error('Failed to fetch transactions:', error); // DEBUG LOG
+      console.error('Failed to fetch transactions:', error);
     }
   };
-  
-  
 
   const handleDelete = async (id) => {
     try {
@@ -50,55 +46,66 @@ function Transactions() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Transactions</h1>
+    <div className="max-w-3xl mx-auto p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Expense Tracker</h1>
 
-      <form onSubmit={handleSubmit} className="mb-6 flex gap-2">
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-2 flex-1"
-          required
-        />
-        <input
-          type="number"
-          step="0.01"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="border p-2 w-32"
-          required
-        />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Add
+      {/* Add Transaction Form */}
+      <form onSubmit={handleSubmit} className="mb-8 bg-white shadow-md rounded p-6 space-y-4">
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-700">Title</label>
+          <input
+            type="text"
+            placeholder="e.g., Coffee, Rent"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-700">Amount ($)</label>
+          <input
+            type="number"
+            step="0.01"
+            placeholder="e.g., 4.99"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded"
+        >
+          Add Transaction
         </button>
       </form>
 
-      {transactions.length === 0 ? (
-        <p className="text-gray-600">No transactions yet!</p>
-      ) : (
-        <ul className="space-y-3">
-          {transactions.map((transaction) => (
-            <li
-              key={transaction.id} // fixed "key" warning
-              className="flex justify-between items-center p-3 bg-white rounded shadow"
-            >
-              <div>
-                <span className="font-semibold">{transaction.title || 'Untitled'}</span>
-                <span className="ml-4 text-gray-700">${transaction.amount?.toFixed(2) || '0.00'}</span>
-              </div>
-              <button
-                onClick={() => handleDelete(transaction.id)}
-                className="bg-red-500 text-white px-3 py-1 rounded"
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Transaction List */}
+      <div className="bg-white shadow rounded p-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-700">Transaction History</h2>
+        {transactions.length === 0 ? (
+          <p className="text-gray-500">No transactions yet!</p>
+        ) : (
+          <ul className="divide-y divide-gray-200">
+            {transactions.map((transaction) => (
+              <li key={transaction.id} className="py-4 flex justify-between items-center">
+                <div>
+                  <p className="font-medium text-gray-800">{transaction.title || 'Untitled'}</p>
+                  <p className="text-sm text-gray-500">${transaction.amount.toFixed(2)}</p>
+                </div>
+                <button
+                  onClick={() => handleDelete(transaction.id)}
+                  className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-1 rounded"
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
