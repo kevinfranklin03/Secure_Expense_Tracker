@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/transactions';
+const API_URL = 'http://44.203.183.171:8080/api/transactions';
 
 const getAll = async () => {
   const response = await axios.get(API_URL);
