@@ -1,14 +1,12 @@
-💰 Expense Tracker Application
-Show Image
-Show Image
-Show Image
+# 💰 Expense Tracker Application
+
 A full-stack expense tracker web application built with React frontend and Spring Boot backend. Track your expenses easily with this responsive and intuitive application deployed on AWS EC2.
 🌐 Live Application
 
 Application URL: http://44.203.183.171:5173/
 Transactions Page: http://44.203.183.171:5173/transactions
 
-📋 Table of Contents
+## 📋 Table of Contents
 
 Features
 Tech Stack
@@ -22,7 +20,7 @@ Backend Setup
 Deployment
 Disclaimer
 
-✨ Features
+## ✨ Features
 
 Transaction Management: Add, update, and delete expenses
 Transaction History: View a comprehensive history of your transactions
@@ -30,7 +28,7 @@ Responsive Design: Works seamlessly on mobile and desktop devices
 RESTful API: Persistent backend API for data storage
 JWT Authentication: Route protection using JSON Web Tokens
 
-🏗️ Tech Stack
+## 🏗️ Tech Stack
 Frontend
 
 React: UI library for building the user interface
@@ -62,10 +60,10 @@ Frontend Setup
 bash# Clone the repository
 git clone https://github.com/yourusername/expense-tracker.git
 
-# Navigate to frontend directory
+### Navigate to frontend directory
 cd expense-tracker/expense-tracker-frontend
 
-# Install dependencies
+### Install dependencies
 npm install
 
 # Start development server
@@ -84,20 +82,20 @@ After running both frontend and backend, the application will be available at:
 Frontend: http://localhost:5173
 Backend API: http://localhost:8080
 
-📦 Deployment
+## 📦 Deployment
 This application is deployed on AWS EC2 with the following configuration:
 bash# SSH into your EC2 instance
 ssh -i "your-key.pem" ec2-user@ec2-instance-ip
 
-# Start backend service with nohup
+### Start backend service with nohup
 cd /path/to/backend
 nohup mvn spring-boot:run > backend.log 2>&1 &
 
-# Start frontend service with tmux
+### Start frontend service with tmux
 cd /path/to/frontend
 tmux new -s frontend
 npm run dev
-# Detach from tmux with Ctrl+B followed by D
+### Detach from tmux with Ctrl+B followed by D
 ⚠ Disclaimer
 This application is developed as a personal project to practice:
 
@@ -105,7 +103,7 @@ Deploying full-stack applications to AWS EC2
 Implementing JWT-based route protection
 Hosting frontend and backend services on a single cloud instance
 
-Important Notes:
+### Important Notes:
 
 No real user account or session persistence has been implemented
 Authentication is stateless and for demonstration purposes only
