@@ -40,21 +40,30 @@ npm install
 npm run dev```
 
 
-### Backend Setup
+## 🔧 Backend Setup
 
 ```bash
 cd expense-tracker-backend
-mvn spring-boot:run```
+mvn spring-boot:run
 
-### ✨ Features
 
-```bash
-Add, update, and delete transactions
+## ✨ Features
 
-View transaction history
+- Add, update, and delete transactions
+- View transaction history
+- Persistent backend API
+- Responsive frontend for mobile and desktop
 
-Persistent backend API
 
-Responsive frontend```
+---
+
+That clearly explains:
+- You have **JWT protection** for the backend.
+- But **no real user persistence or session storage** — which is fine for this AWS EC2 deployment project.
+
+---
+
+If you want, I can also add a small "⚠ Disclaimer" in the README saying the app is for educational/demo purposes (to avoid people thinking it’s a full production-ready app). Want me to? 👇
+
 
 
