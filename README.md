@@ -37,7 +37,7 @@ An expense tracker web application built with a **React** frontend and a **Sprin
 ```bash
 cd expense-tracker-frontend
 npm install
-npm run dev```
+npm run dev
 
 
 ## 🔧 Backend Setup
@@ -57,13 +57,19 @@ mvn spring-boot:run
 
 ---
 
-That clearly explains:
-- You have **JWT protection** for the backend.
-- But **no real user persistence or session storage** — which is fine for this AWS EC2 deployment project.
-
 ---
 
-If you want, I can also add a small "⚠ Disclaimer" in the README saying the app is for educational/demo purposes (to avoid people thinking it’s a full production-ready app). Want me to? 👇
+## ⚠ Disclaimer
+
+This application is developed as a personal project to practice:
+- Deploying full-stack applications to AWS EC2.
+- Implementing JWT-based route protection.
+- Hosting frontend and backend services on a single cloud instance.
+
+**Note**:
+- No real user account or session persistence has been implemented.
+- Authentication is stateless and for demonstration purposes only.
+- Not intended for production use.
 
 
 
