@@ -37,14 +37,14 @@ An expense tracker web application built with a **React** frontend and a **Sprin
 ```bash
 cd expense-tracker-frontend
 npm install
-npm run dev
+npm run dev```
 
 
 ### Backend Setup
 
 ```bash
 cd expense-tracker-backend
-mvn spring-boot:run
+mvn spring-boot:run```
 
 ### ✨ Features
 
@@ -55,6 +55,6 @@ View transaction history
 
 Persistent backend API
 
-Responsive frontend
+Responsive frontend```
 
 
